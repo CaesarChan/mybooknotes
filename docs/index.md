@@ -1,17 +1,59 @@
-# Welcome to MkDocs
+# CaesarChan 的读书笔记
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+## 本电子书制作和写作方式
+使用 mkdocs 和 markdown 构建，vim 编写，使用  Python-Markdown-Math 完成数学公式。
+markdown 语法参考：http://xianbai.me/learn-md/article/about/readme.html
 
-## Commands
+安装依赖：
+```sh
+# 方式1：
+pip install mkdocs    # 制作电子书, http://markdown-docs-zh.readthedocs.io/zh_CN/latest/
+# https://stackoverflow.com/questions/27882261/mkdocs-and-mathjax/31874157
+pip install https://github.com/mitya57/python-markdown-math/archive/master.zip
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+# 推荐方式2：
+pip install -r requirements.txt
+```
 
-## Project layout
+编写并查看：
+```sh
+mkdocs serve     # 修改自动更新，浏览器打开 http://localhost:8000 访问
+# 数学公式参考 https://www.zybuluo.com/codeep/note/163962
+mkdocs gh-deploy    # 部署到自己的 github pages, 如果是 readthedocs 会自动触发构建
+```
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## 优化访问 - 去除 Google 字体
+
+1. 自定义 **theme** 并创建 **main.html**
+```bash
+mkdir custom_theme
+touch main.html
+```
+
+2. 模板内容替换
+```html
+{% extends "base.html" %}
+
+{% block htmltitle %}
+<title>CaesarChan的读书笔记</title>
+{% endblock %}
+
+{%- block styles %}
+<link rel="stylesheet" href="{{ 'css/theme.css'|url }}" />
+<link rel="stylesheet" href="{{ 'css/theme_extra.css'|url }}" />
+{%- if config.theme.highlightjs %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+{%- endif %}
+{%- for path in extra_css %}
+<link href="{{ path }}" rel="stylesheet" />
+{%- endfor %}
+{%- endblock %}
+
+```
+
+## 发布到 readthedoc
+
+1. 使用 GitHub 账号注册并导入项目
+2. 登入 dashboard，选择管理>>设置>>高级设置，选择 Python版本 2.7
+3. 手动构建并访问
+
