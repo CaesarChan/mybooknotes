@@ -57,3 +57,25 @@ touch main.html
 2. 登入 dashboard，选择管理>>设置>>高级设置，选择 Python版本 2.7
 3. 手动构建并访问
 
+## 使用 OSS 保存图片
+
+###  MacOS 安装 ossutil
+1. 下载ossutil。
+
+```bash
+curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.7.5/ossutilmac64
+```
+
+2.修改文件执行权限 
+
+```bash
+chmod 755 ossutilmac64
+mv ossutilmac64 /usr/local/bin 
+source ~/.zshrc
+```
+
+3. 生成配置文件
+
+```bash
+ossutilmac64 config
+```
