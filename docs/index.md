@@ -1,10 +1,12 @@
 # CaesarChan 的读书笔记
 
 ## 本电子书制作和写作方式
+
 使用 mkdocs 和 markdown 构建，vim 编写，使用  Python-Markdown-Math 完成数学公式。
 markdown 语法参考：http://xianbai.me/learn-md/article/about/readme.html
 
 安装依赖：
+
 ```sh
 # 方式1：
 pip install mkdocs    # 制作电子书, http://markdown-docs-zh.readthedocs.io/zh_CN/latest/
@@ -16,6 +18,7 @@ pip install -r requirements.txt
 ```
 
 编写并查看：
+
 ```sh
 mkdocs serve     # 修改自动更新，浏览器打开 http://localhost:8000 访问
 # 数学公式参考 https://www.zybuluo.com/codeep/note/163962
@@ -25,12 +28,14 @@ mkdocs gh-deploy    # 部署到自己的 github pages, 如果是 readthedocs 会
 ## 优化访问 - 去除 Google 字体
 
 1. 自定义 **theme** 并创建 **main.html**
+
 ```bash
 mkdir custom_theme
 touch main.html
 ```
 
 2. 模板内容替换
+
 ```html
 {% extends "base.html" %}
 
@@ -59,14 +64,15 @@ touch main.html
 
 ## 使用 OSS 保存图片
 
-###  MacOS 安装 ossutil
-1. 下载ossutil。
+### MacOS 安装 ossutil
+
+1.下载ossutil
 
 ```bash
 curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.7.5/ossutilmac64
 ```
 
-2.修改文件执行权限 
+2.修改文件执行权限
 
 ```bash
 chmod 755 ossutilmac64
@@ -74,8 +80,14 @@ mv ossutilmac64 /usr/local/bin
 source ~/.zshrc
 ```
 
-3. 生成配置文件
+3.生成配置文件
 
 ```bash
 ossutilmac64 config
+```
+
+4.上传文件
+
+```bash
+ossutilmac64 cp {{your_file}} -r oss://{{your_bucket}}
 ```
