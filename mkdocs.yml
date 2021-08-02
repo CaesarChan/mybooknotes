@@ -4,6 +4,6 @@ theme:
     custom_dir: custom_theme
 nav:
     - 简介: index.md
-    - 网课:
-        - 《DDD 领域驱动设计》: '网课/ddd domain design.md'
+    - 极客时间:
+        - 《DDD 领域驱动设计》: '极客时间/ddd domain design.md'
 

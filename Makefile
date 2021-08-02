@@ -11,3 +11,6 @@ publish:
 
 clean:
 	rm -rf site
+
+oss:
+	ossutilmac64 cp -r uml oss://hugopost
