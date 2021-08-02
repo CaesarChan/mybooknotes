@@ -3,7 +3,7 @@
 ## 本电子书制作和写作方式
 
 使用 mkdocs 和 markdown 构建，vim 编写，使用  Python-Markdown-Math 完成数学公式。
-markdown 语法参考：http://xianbai.me/learn-md/article/about/readme.html
+[markdown 语法参考](http://xianbai.me/learn-md/article/about/readme.html)
 
 安装依赖：
 
