@@ -98,4 +98,42 @@ ossutilmac64 cp {{your_file}} -r oss://{{your_bucket}}
 
 2.绘制脑图  
 
+```xml
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+caption 简介
+title 简介 
+
+* 读书笔记 
+** 1 本电子书制作和写作方式
+*** mkdocs
+*** markdown
+
+
+** 2 优化访问 - 去除 Google 字体
+*** 自定义 theme
+*** 修改 base.html 
+
+
+** 3 发布到 readthedoc
+*** 使用 GitHub 账号注册并导入项目
+*** 登入 dashboard，选择管理>>设置>>高级设置，选择 Python版本 2.7
+*** 手动构建并访问
+
+** 4 使用 OSS 保存图片
+*** MacOS 安装 ossutil
+*** 配置文件
+
+
+** 5 使用 PlantUML 绘制图片
+*** VsCode 安装 PlantUML
+*** 新增 index.puml 文件
+*** 保存图片并上传到 OSS
+
+
+@endmindmap
+
+```
+
 ![img](https://hugopost.oss-cn-shanghai.aliyuncs.com/index/%E7%AE%80%E4%BB%8B.png?Expires=1627913834&OSSAccessKeyId=TMP.3KgJZkLLtDzR4HyNuiG1AciprTeafZneJUyaB4an3EFT7MBHErb97dXJ8bt5SJVy6j8J7siVGzWg7k5ipMdQvFHCLjmM29&Signature=FM%2ByaAY%2BcJ7vfQ2bs8GEy0h4g94%3D&response-content-type=application%2Foctet-stream)  
