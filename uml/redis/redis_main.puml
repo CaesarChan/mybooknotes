@@ -1,0 +1,41 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+caption figure 1
+title Redis
+
+*_ <font color="Violet">main</font>
+**_ <font color="orange">initServerConfig</font>
+
+**_ <font color="green">loadSeverConfig</font>
+***_ <font color="green">populateCommandTable</font>
+
+**_ <font color="red">initServer</font>
+***_ <font color="red">aeCreateEventLoop</font>
+***_ <font color="red">listenToPort</font>
+***_ <font color="red">anetUnixServer</font>
+***_ <font color="red">aeCreateTimeEvent</font>
+***_ <font color="red">aeCreateFileEvent</font>
+***_ <font color="red">aeCreateFileEvent</font>
+***_ <font color="red">aeCreateFileEvent</font>
+***_ <font color="red">bioInit</font>
+
+**_ <font color="blue">aeSetBeforeSleepProc</font>
+
+**_ <font color="magenta">aeSetAfterSleepProc</font>
+
+**_ <font color="RoyalBlue">aeMain</font>
+***_ <font color="RoyalBlue">beforesleep</font>
+***_ <font color="RoyalBlue">aeProcessEvents</font>
+****_ <font color="RoyalBlue">aeSearchNearestTimer</font>
+****_ <font color="RoyalBlue">aeApiPoll</font>
+****_ <font color="RoyalBlue">aftersleep</font>
+****_ <font color="RoyalBlue">rfileProc/wfileProc</font>
+****_ <font color="RoyalBlue">processTimeEvents</font>
+*****_ <font color="RoyalBlue">timeProc</font>
+
+
+
+**_ <font color="GoldEnrod">aeDeleteEventLoop</font>
+
+@endmindmap

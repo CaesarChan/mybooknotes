@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+partition 初始化 {
+:配置加载和初始化]
+:创建事件循环]
+:开始 Socket 监听]
+:向事件循环重注册timer事件回调
+              (serverCron)]
+:向事件循环汇中注册 I/O 事件回调
+        (acceptTcpHandler,
+        acceptUnixHandler)]
+:初始化后台线程
+     (bioinit)]
+:启动事件循环]
+}
+
+partition 事件循环 {
+
+repeat
+  if (事件循环是否结束?) then (No)
+  :查找最近的timer事件]
+  :等待事件发生]
+  if (有I/O事件发生还是超时?) then (IO事件发生)
+    -[#blue]->
+    :执行I/O事件回调]
+  else(发生超时)
+  endif
+  :执行timer事件回调]
+else (Yes)
+    stop
+endif
+    repeat while
+}
+
+@enduml
