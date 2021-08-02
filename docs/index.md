@@ -27,14 +27,14 @@ mkdocs gh-deploy    # 部署到自己的 github pages, 如果是 readthedocs 会
 
 ## 优化访问 - 去除 Google 字体
 
-1. 自定义 **theme** 并创建 **main.html**
+1.自定义 **theme** 并创建 **main.html**
 
 ```bash
 mkdir custom_theme
 touch main.html
 ```
 
-2. 模板内容替换
+2.模板内容替换
 
 ```html
 {% extends "base.html" %}
@@ -58,9 +58,9 @@ touch main.html
 
 ## 发布到 readthedoc
 
-1. 使用 GitHub 账号注册并导入项目
-2. 登入 dashboard，选择管理>>设置>>高级设置，选择 Python版本 2.7
-3. 手动构建并访问
+1.使用 GitHub 账号注册并导入项目
+2.登入 dashboard，选择管理>>设置>>高级设置，选择 Python版本 2.7
+3.手动构建并访问
 
 ## 使用 OSS 保存图片
 
@@ -91,3 +91,11 @@ ossutilmac64 config
 ```bash
 ossutilmac64 cp {{your_file}} -r oss://{{your_bucket}}
 ```
+
+## 使用 PlantUML 绘制图片
+
+1.VsCode 安装 PlantUML 插件 并启用
+
+2.绘制脑图  
+
+![img](https://hugopost.oss-cn-shanghai.aliyuncs.com/index/%E7%AE%80%E4%BB%8B.png?Expires=1627913834&OSSAccessKeyId=TMP.3KgJZkLLtDzR4HyNuiG1AciprTeafZneJUyaB4an3EFT7MBHErb97dXJ8bt5SJVy6j8J7siVGzWg7k5ipMdQvFHCLjmM29&Signature=FM%2ByaAY%2BcJ7vfQ2bs8GEy0h4g94%3D&response-content-type=application%2Foctet-stream)  
