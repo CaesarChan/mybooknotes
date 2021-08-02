@@ -1,6 +1,6 @@
 site_name: My Docs
 theme:
-    name: material
+    name: readthedocs
     custom_dir: custom_theme
 nav:
     - 简介: index.md

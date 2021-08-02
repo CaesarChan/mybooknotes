@@ -4,3 +4,14 @@
 <title>CaesarChan的读书笔记</title>
 {% endblock %}
 
+{%- block styles %}
+
+<link rel="stylesheet" href="{{ 'css/theme.css'|url }}" />
+<link rel="stylesheet" href="{{ 'css/theme_extra.css'|url }}" />
+{%- if config.theme.highlightjs %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+{%- endif %}
+{%- for path in extra_css %}
+<link href="{{ path }}" rel="stylesheet" />
+{%- endfor %}
+{%- endblock %}
