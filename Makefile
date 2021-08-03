@@ -10,7 +10,7 @@ publish:
 	mkdocs gh-deploy --ignore-version
 
 clean:
-	rm -rf site
+	rm -rf out/uml	
 
 oss:
 	ossutilmac64 cp -r uml oss://hugopost
