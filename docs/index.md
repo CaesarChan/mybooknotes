@@ -1,9 +1,10 @@
-# CaesarChan 的读书笔记
+# NahcRaseac's NoteBook
 
-## 本电子书制作和写作方式
+## mkdocs & markdown 
 
-使用 mkdocs 和 markdown 构建，vim 编写，使用  Python-Markdown-Math 完成数学公式。
-[markdown 语法参考](http://xianbai.me/learn-md/article/about/readme.html)
+* [mkdocs](https://github.com/mkdocs/mkdocs)
+* [markdown](http://xianbai.me/learn-md/article/about/readme.html)
+
 
 安装依赖：
 
@@ -136,4 +137,4 @@ title 简介
 
 ```
 
-![](./简介.png)
+![](https://hugopost.oss-cn-shanghai.aliyuncs.com/index/%E7%AE%80%E4%BB%8B.png)
