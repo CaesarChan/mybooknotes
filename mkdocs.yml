@@ -6,4 +6,6 @@ nav:
     - 简介: index.md
     - 极客时间:
         - 《DDD 领域驱动设计》: '极客时间/ddd domain design.md'
+    - 凤凰架构:
+        -  前端工程 : '凤凰架构/前端工程.md'
 
