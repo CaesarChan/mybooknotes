@@ -7,5 +7,6 @@ nav:
     - 极客时间:
         - 《DDD 领域驱动设计》: '极客时间/ddd domain design.md'
     - 凤凰架构:
+        -  docker 环境配置 : '凤凰架构/docker环境配置.md'
         -  前端工程 : '凤凰架构/前端工程.md'
 
