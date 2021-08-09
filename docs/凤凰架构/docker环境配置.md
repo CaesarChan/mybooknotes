@@ -1,9 +1,10 @@
 # 加速器
-加速器地址
 
-```
-https://01xu5ska.mirror.aliyuncs.com
-```
+* 加速器地址
+
+    ```
+    https://01xu5ska.mirror.aliyuncs.com
+    ```
 
 # 操作文档
 
@@ -28,19 +29,70 @@ https://01xu5ska.mirror.aliyuncs.com
 
 [Dockerfile 镜像构建参考文档](https://docs.docker.com/engine/reference/builder/)
 
-## Ubuntu
 
-## CentOS
+##  Linux
 
-* 安装／升级Docker客户端
+### [Centos 安装 Docker](https://docs.docker.com/engine/install/centos/)
 
-推荐安装1.10.0以上版本的Docker客户端，参考文档 [docker-ce](https://developer.aliyun.com/article/110806)
+#### 删除旧版本
+
+```bash
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+```
+
+#### 从 repositry 安装
+
+##### 设置 repositry
+
+```bash
+sudo yum install -y yum-utils
+
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+##### 安装 Docker Engine
+
+1. 安装最新版本
+
+    ```
+    sudo yum install docker-ce docker-ce-cli containerd.io
+    ```
+
+2. 安装指定版本
+
+    * 查看版本信息
+
+        ```
+        yum list docker-ce --showduplicates | sort -r
+        ```
+
+    * 安装示例: VERSION_STRING= **docker-ce-18.09.1**
+
+        ```
+        sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
+        ```
+        
+3. 启动 Docker
+
+    ```
+    sudo systemctl start docker
+    ```
+
+#### [Ubuntu 安装 Docker](https://docs.docker.com/engine/install/ubuntu/)
 
 
+###  配置镜像加速器
 
-* 配置镜像加速器
-
-    * 针对Docker客户端版本大于 1.10.0 的用户您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
+针对Docker客户端版本大于 1.10.0 的用户您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
 
 ```
 sudo mkdir -p /etc/docker
