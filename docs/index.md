@@ -1,12 +1,11 @@
 # NahcRaseac's NoteBook
 
-## mkdocs & markdown 
+## mkdocs & markdown
 
 * [mkdocs](https://github.com/mkdocs/mkdocs)
 * [markdown](http://xianbai.me/learn-md/article/about/readme.html)
 
-
-安装依赖：
+* 安装依赖：
 
 ```sh
 # 方式1：
@@ -18,7 +17,7 @@ pip install https://github.com/mitya57/python-markdown-math/archive/master.zip
 pip install -r requirements.txt
 ```
 
-编写并查看：
+* 编写并查看：
 
 ```sh
 mkdocs serve     # 修改自动更新，浏览器打开 http://localhost:8000 访问
@@ -28,14 +27,14 @@ mkdocs gh-deploy    # 部署到自己的 github pages, 如果是 readthedocs 会
 
 ## 优化访问 - 去除 Google 字体
 
-1.自定义 **theme** 并创建 **main.html**
+* 自定义 **theme** 并创建 **main.html**
 
 ```bash
 mkdir custom_theme
 touch main.html
 ```
 
-2.模板内容替换
+* 模板内容替换
 
 ```html
 {% extends "base.html" %}
@@ -59,21 +58,21 @@ touch main.html
 
 ## 发布到 readthedoc
 
-1.使用 GitHub 账号注册并导入项目
-2.登入 dashboard，选择管理>>设置>>高级设置，选择 Python版本 2.7
-3.手动构建并访问
+1. 使用 GitHub 账号注册并导入项目
+2. 登入 dashboard，选择管理>>设置>>高级设置，选择 Python版本 2.7
+3. 手动构建并访问
 
 ## 使用 OSS 保存图片
 
 ### MacOS 安装 ossutil
 
-1.下载ossutil
+* 下载ossutil
 
 ```bash
 curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.7.5/ossutilmac64
 ```
 
-2.修改文件执行权限
+* 修改文件执行权限
 
 ```bash
 chmod 755 ossutilmac64
@@ -81,13 +80,13 @@ mv ossutilmac64 /usr/local/bin
 source ~/.zshrc
 ```
 
-3.生成配置文件
+* 生成配置文件
 
 ```bash
 ossutilmac64 config
 ```
 
-4.上传文件
+* 上传文件
 
 ```bash
 ossutilmac64 cp {{your_file}} -r oss://{{your_bucket}}
@@ -95,9 +94,9 @@ ossutilmac64 cp {{your_file}} -r oss://{{your_bucket}}
 
 ## 使用 PlantUML 绘制图片
 
-1.VsCode 安装 PlantUML 插件 并启用
+* VsCode 安装 PlantUML 插件 并启用
 
-2.绘制脑图  
+* 绘制脑图  
 
 ```xml
 @startmindmap
@@ -137,4 +136,4 @@ title 简介
 
 ```
 
-![](https://hugopost.oss-cn-shanghai.aliyuncs.com/index/%E7%AE%80%E4%BB%8B.png)
+![index xmind](https://hugopost.oss-cn-shanghai.aliyuncs.com/index/%E7%AE%80%E4%BB%8B.png)
