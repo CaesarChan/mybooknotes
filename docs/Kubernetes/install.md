@@ -2,7 +2,7 @@
 
 ## 搭建NFS作为默认SC
 
-### 配置 NFS-Server
+### 4.1 配置 NFS-Server
 
 安装客户端工具
 
@@ -62,7 +62,7 @@ spec:
       mountPath: /usr/share/nginx/html/
 ```
 
-### 搭建 NFS-Client
+### 4.2 搭建 NFS-Client
 
 **服务器端防火墙开放111、662、875、892、2049的 tcp / udp 允许，否则远端客户无法连接。**
 
@@ -100,19 +100,15 @@ echo "hello nfs server" > /root/nfsmount/test.txt
 
 在 nfs 服务器上执行以下命令，验证文件写入成功
 
-```shell
-cat /data/volumes/test.txt
-```
+```cat /data/volumes/test.txt```
 
-### 设置动态供应
+### 4.3 设置动态供应
 
-#### 创建provisioner
+#### 4.3.1 创建provisioner
 
 创建授权
 
-```shell
-vi nfs-rbac.yaml
-```
+```vi nfs-rbac.yaml```
 
 ```yaml
 ---
@@ -163,9 +159,7 @@ roleRef:
 创建nfs-client的授权
 **这个镜像中volume的mountPath默认为/persistentvolumes，不能修改，否则运行时会报错**
 
-```shell
-vi nfs-deployment.yaml
-```
+```vi nfs-deployment.yaml```
 
 ```yaml
 kind: Deployment
@@ -205,11 +199,9 @@ spec:
                path: /nfs/data
 ```
 
-创建storageclass
+#### 4.3.2 创建 StorageClass
 
-```shell
-vi storageclass-nfs.yaml
-```
+```vi storageclass-nfs.yaml```
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -235,6 +227,78 @@ reclaimPolicy: Delete
 
 **Recycle**
 保留PV，但清空其上数据，已废弃
+
+#### 改变默认 StorageClass
+
+[官方文档](https://kubernetes.io/zh/docs/tasks/administer-cluster/change-default-storage-class/#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e6%94%b9%e5%8f%98%e9%bb%98%e8%ae%a4-storage-class)
+
+```shell
+
+kubectl patch storageclass storage-nfs -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
+```
+
+检查
+
+```kubectl get sc```
+
+### 4.4 验证 nfs 动态供应
+
+#### 4.4.1  创建 pvc
+
+```shell
+vi  pvc.yaml
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-claim-01
+spec:
+  storageClassName: storage-nfs  
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Mi
+```
+
+#### 4.4.2 使用 pvc
+
+```vi pvc_pod_test.yaml```
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-pod
+spec:
+  containers:
+  - name: test-pod
+    image: busybox
+    command:
+      - "/bin/sh"
+    args:
+      - "-c"
+      - "touch /mnt/SUCCESS && exit 0 || exit 1"
+    volumeMounts:
+      - name: nfs-pvc
+        mountPath: "/mnt"
+  restartPolicy: "Never"
+  volumes:
+    - name: nfs-pvc
+      persistentVolumeClaim:
+        claimName: pvc-claim-01
+```
+
+#### 问题
+
+### 4.5 快速安装 Kubesphere
+
+[官方文档](https://kubesphere.io/docs/quick-start/minimal-kubesphere-on-k8s/)
+
+[kubeasz 3.0.0 NFS动态存储问题](https://github.com/easzlab/kubeasz/issues/989)
 
 ## 参考文档
 
