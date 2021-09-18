@@ -1,6 +1,8 @@
 # 安装集群
 
-## 搭建NFS作为默认SC
+[TOC]
+
+## 4 搭建NFS作为默认SC
 
 ### 4.1 配置 NFS-Server
 
@@ -292,13 +294,13 @@ spec:
         claimName: pvc-claim-01
 ```
 
-#### 问题
+#### 4.4.2 NFS动态存储问题
+
+[kubeasz 3.0.0 NFS动态存储问题](https://github.com/easzlab/kubeasz/issues/989)
 
 ### 4.5 快速安装 Kubesphere
 
 [官方文档](https://kubesphere.io/docs/quick-start/minimal-kubesphere-on-k8s/)
-
-[kubeasz 3.0.0 NFS动态存储问题](https://github.com/easzlab/kubeasz/issues/989)
 
 ## 参考文档
 

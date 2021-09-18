@@ -1,5 +1,7 @@
 # NahcRaseac's NoteBook
 
+[TOC]
+
 ## mkdocs & markdown
 
 * [mkdocs](https://github.com/mkdocs/mkdocs)
