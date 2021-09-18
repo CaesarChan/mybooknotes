@@ -11,4 +11,6 @@ nav:
         -  前端工程 : '凤凰架构/前端工程.md'
     - Linux:
         - I/O : 'Linux/io.md'
+    - Kubernetes:
+        - Install : 'Kubernetes/install.md'
 

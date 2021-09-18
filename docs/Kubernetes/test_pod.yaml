@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vol-nfs
+  namespace: default
+spec:
+  volumes:
+  - name: html
+    nfs:
+      path: /nfs/data   
+      server: 172.19.130.131 
+  containers:
+  - name: myapp
+    image: nginx
+    volumeMounts:
+    - name: html
+      mountPath: /usr/share/nginx/html/
