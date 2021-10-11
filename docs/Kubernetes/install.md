@@ -2,7 +2,13 @@
 
 [TOC]
 
-## 4 搭建NFS作为默认SC
+## 1 使用 Kubeaz 快速安装集群
+
+## 2 购买域名
+
+## 3 CES 配置负载均衡
+
+## 4 搭建 NFS 作为默认 SC
 
 ### 4.1 配置 NFS-Server
 
@@ -102,7 +108,7 @@ echo "hello nfs server" > /root/nfsmount/test.txt
 
 在 nfs 服务器上执行以下命令，验证文件写入成功
 
-```cat /data/volumes/test.txt```
+```cat /root/nfsmount/test.txt```
 
 ### 4.3 设置动态供应
 
@@ -298,7 +304,7 @@ spec:
 
 [kubeasz 3.0.0 NFS动态存储问题](https://github.com/easzlab/kubeasz/issues/989)
 
-### 4.5 快速安装 Kubesphere
+## 5 快速安装 Kubesphere
 
 [官方文档](https://kubesphere.io/docs/quick-start/minimal-kubesphere-on-k8s/)
 
