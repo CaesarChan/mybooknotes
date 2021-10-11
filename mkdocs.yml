@@ -13,4 +13,9 @@ nav:
         - I/O : 'Linux/io.md'
     - Kubernetes:
         - Install : 'Kubernetes/install.md'
-
+    - 中间件:
+        - RocketMQ: 
+            - '中间件/RocketMQ/消息去重.md'
+            - '中间件/RocketMQ/Golang使用注意事项.md'
+    - Blog:
+        - 'Blog/自建图床.md'
