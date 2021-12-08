@@ -21,3 +21,6 @@ nav:
         - 'Blog/自建图床.md'
     - 数据库:
         - '数据库/MySQL/数据库索引设计与优化.md'
+    - JetBrains:
+        - 'JetBrains/deployment_remote_server.md'
+    
