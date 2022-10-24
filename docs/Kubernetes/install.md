@@ -6,6 +6,7 @@
 
 ### 版本选择
 
+<table>
   <thead>
     <tr>
       <td>Kubernetes version</td>
