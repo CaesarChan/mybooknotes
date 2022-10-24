@@ -17,7 +17,7 @@ spec:
          serviceAccount: nfs-provisioner
          containers:
             -  name: nfs-client-provisioner
-               image: lizhenliang/nfs-client-provisioner
+               image: easzlab/nfs-subdir-external-provisioner:v4.0.2 
                volumeMounts:
                  -  name: nfs-client-root
                     mountPath:  /persistentvolumes
@@ -25,11 +25,11 @@ spec:
                  -  name: PROVISIONER_NAME 
                     value: storage.pri/nfs 
                  -  name: NFS_SERVER
-                    value: 172.19.130.131
+                    value: 172.16.0.5 
                  -  name: NFS_PATH
                     value: /nfs/data
          volumes:
            - name: nfs-client-root
              nfs:
-               server: 172.19.130.131
+               server: 172.16.0.5 
                path: /nfs/data

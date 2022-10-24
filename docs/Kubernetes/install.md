@@ -4,6 +4,32 @@
 
 ## 1 使用 Kubeaz 快速安装集群
 
+### 版本选择
+
+  <thead>
+    <tr>
+      <td>Kubernetes version</td>
+      <td>1.20</td>
+      <td>1.21</td>
+      <td>1.22</td>
+      <td>1.23</td>
+      <td>1.24</td>
+      <td>1.25</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>kubeasz version</td>
+      <td>3.0.1</td>
+      <td>3.1.0</td>
+      <td>3.1.1</td>
+      <td>3.2.0</td>
+      <td>3.3.1</td>
+      <td>3.4.0</td>
+    </tr>
+  </tbody>
+</table>
+
 ## 2 购买域名
 
 ## 3 CES 配置负载均衡
@@ -61,7 +87,7 @@ spec:
   - name: html
     nfs:
       path: /nfs/data  
-      server: 172.19.130.131 
+      server: 172.16.0.5 
   containers:
   - name: myapp
     image: nginx
@@ -84,7 +110,7 @@ yum install -y nfs-utils
 
 ```shell
 #showmount -e $(nfs服务器的IP)
-showmount -e 172.19.130.131 
+showmount -e 172.16.0.5 
 ```
 
 执行以下命令挂载 nfs 服务器上的共享目录到本机路径 /root/nfsmount
@@ -97,7 +123,7 @@ mkdir /root/nfsmount
 
 ```shell
 # mount -t nfs $(nfs服务器的IP):/root/nfs_root /root/nfsmount
-mount -t nfs 172.19.130.131:/nfs/data /root/nfsmount
+mount -t nfs 172.16.0.5:/nfs/data /root/nfsmount
 ```
 
 写入一个测试文件
@@ -197,13 +223,13 @@ spec:
                  -  name: PROVISIONER_NAME 
                     value: storage.pri/nfs 
                  -  name: NFS_SERVER
-                    value: 172.19.130.131
+                    value: 172.16.0.5
                  -  name: NFS_PATH
                     value: /nfs/data
          volumes:
            - name: nfs-client-root
              nfs:
-               server: 172.19.130.131
+               server: 172.16.0.5
                path: /nfs/data
 ```
 
@@ -302,7 +328,7 @@ spec:
 
 #### 4.4.2 NFS动态存储问题
 
-[kubeasz 3.0.0 NFS动态存储问题](https://github.com/easzlab/kubeasz/issues/989)
+使用最新镜像解决: easzlab/nfs-subdir-external-provisioner:v4.0.2
 
 ## 5 快速安装 Kubesphere
 
@@ -311,3 +337,52 @@ spec:
 ## 参考文档
 
 [一站式搭建](https://www.yuque.com/leifengyang/kubesphere/grw8se#TCVCL)
+
+## 6  python 2.7 pip 安装错误
+
+```bash
+pip install --upgrade pip==20.0.1
+pip install --upgrade setuptools
+pip install ansible
+```
+
+## 7 公有云配置
+
+注意配置内网互通
+
+```bash
+172.16.0.0/12 ALL
+```
+
+## Kubernetes 运行状态检查
+
+1.检查docker服务
+
+```bash
+ systemctl status docker.service
+ ```
+
+2.检查kubelet服务
+
+```bash
+systemctl status kubelet.service
+```
+
+3.查看端口是是否被监听（没有监听）
+
+```bash
+netstat -antp| grep 6443
+netstat -pnlt | grep 6443
+```
+
+4.检查防火墙状态（正常）
+
+```bash
+systemctl status firewalld.service
+```
+
+5.查看日志
+
+```bash
+journalctl -xeu kubelet
+```

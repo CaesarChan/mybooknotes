@@ -41,39 +41,3 @@ roleRef:
   kind: ClusterRole
   name: nfs-provisioner-runner
   apiGroup: rbac.authorization.k8s.io
----
-kind: Deployment
-apiVersion: apps/v1
-metadata:
-   name: nfs-client-provisioner
-spec:
-   replicas: 1
-   strategy:
-     type: Recreate
-   selector:
-     matchLabels:
-        app: nfs-client-provisioner
-   template:
-      metadata:
-         labels:
-            app: nfs-client-provisioner
-      spec:
-         serviceAccount: nfs-provisioner
-         containers:
-            -  name: nfs-client-provisioner
-               image: 192.168.145.28:1603/kubesphere/nfs-client-provisioner:v3.1.0-k8s1.11
-               volumeMounts:
-                 -  name: nfs-client-root
-                    mountPath:  /persistentvolumes
-               env:
-                 -  name: PROVISIONER_NAME 
-                    value: storage.pri/nfs 
-                 -  name: NFS_SERVER
-                    value: 192.168.116.101
-                 -  name: NFS_PATH
-                    value: /nfs/data
-         volumes:
-           - name: nfs-client-root
-             nfs:
-               server: 192.168.116.101
-               path: /nfs/data
